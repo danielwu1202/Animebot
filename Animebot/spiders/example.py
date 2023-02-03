@@ -1,10 +1,11 @@
 import scrapy
 
 
-class ExampleSpider(scrapy.Spider):
-    name = "example"
-    allowed_domains = ["example.com"]
-    start_urls = ["http://example.com/"]
+class GamerSpider(scrapy.Spider):
+    name = "gamer"
+    allowed_domains = ["ani.gamer.com.tw"]
+    start_urls = ["https://ani.gamer.com.tw/"]
 
     def parse(self, response):
-        pass
+        name = response.css('div.theme-info-block p::text').get()
+        print(name)
