@@ -7,5 +7,5 @@ class GamerSpider(scrapy.Spider):
     start_urls = ["https://ani.gamer.com.tw/"]
 
     def parse(self, response):
-        name = response.css('div.theme-info-block p::text').get()
-        print(name)
+        title = response.xpath("//p[@class='theme-name']/text()").getall()
+        print(title)
